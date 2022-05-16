@@ -4,9 +4,6 @@ import {
   ACCESSORIES_DETAILS_FAIL,
   ACCESSORIES_DETAILS_REQUEST,
   ACCESSORIES_DETAILS_SUCCESS,
-  ADMIN_ACCESSORIES_FAIL,
-  ADMIN_ACCESSORIES_REQUEST,
-  ADMIN_ACCESSORIES_SUCCESS,
   ALL_ACCESSORIES_FAIL,
   ALL_ACCESSORIES_REQUEST,
   ALL_ACCESSORIES_SUCCESS,
@@ -46,47 +43,59 @@ export const getAccessories =
   };
 
 // Get All Accessories for ADMIN
-export const getAdminAccessories = () => async (dispatch) => {
-  try {
-    dispatch({ type: ADMIN_ACCESSORIES_REQUEST });
+// export const getAdminAccessories = () => async (dispatch) => {
+//   try {
+//     dispatch({ type: ADMIN_ACCESSORIES_REQUEST });
 
-    const { data } = await axios.get(`${baseURL}/admin/accessories`);
+//     const { data } = await axios.get(`${baseURL}/admin/accessories`);
 
-    dispatch({ type: ADMIN_ACCESSORIES_SUCCESS, payload: data.accessories });
-  } catch (error) {
-    dispatch({
-      type: ADMIN_ACCESSORIES_FAIL,
-      payload: error.response.data.message,
-    });
-  }
-};
+//     dispatch({ type: ADMIN_ACCESSORIES_SUCCESS, payload: data.accessories });
+//   } catch (error) {
+//     dispatch({
+//       type: ADMIN_ACCESSORIES_FAIL,
+//       payload: error.response.data.message,
+//     });
+//   }
+// };
 
 // Create NEW Accessories
-export const createAccessories = (accessoriesData) => async (dispatch) => {
-  try {
-    dispatch({ type: NEW_ACCESSORIES_REQUEST });
+export const createAccessories =
+  (accessoriesData, authtoken) => async (dispatch) => {
+    try {
+      dispatch({ type: NEW_ACCESSORIES_REQUEST });
 
-    const config = {
-      headers: { "Content-type": "application/json" },
-    };
+      // const config = {
+      //   headers: { "Content-type": "application/json" },
+      // };
 
-    const { data } = await axios.post(
-      `${baseURL}/admin/accessory/new`,
-      accessoriesData,
-      config
-    );
+      // const { data } = await axios.post(
+      //   `${baseURL}/admin/accessory/new`,
+      //   accessoriesData,
+      //   config
+      // );
 
-    dispatch({
-      type: NEW_ACCESSORIES_SUCCESS,
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: NEW_ACCESSORIES_FAIL,
-      payload: error.response.data.message,
-    });
-  }
-};
+      const { data } = await axios.post(
+        `${baseURL}/admin/accessory/new`,
+        accessoriesData,
+        {
+          headers: {
+            "Content-type": "application/json",
+            authtoken,
+          },
+        }
+      );
+
+      dispatch({
+        type: NEW_ACCESSORIES_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: NEW_ACCESSORIES_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
 
 // Get Single Accessory Details
 export const getAccessoryDetails = (id) => async (dispatch) => {
@@ -105,11 +114,22 @@ export const getAccessoryDetails = (id) => async (dispatch) => {
 };
 
 // Delete An Accessory
-export const deleteAccessory = (id) => async (dispatch) => {
+export const deleteAccessory = (id, authtoken) => async (dispatch) => {
   try {
     dispatch({ type: DELETE_ACCESSORIES_REQUEST });
 
-    const { data } = await axios.delete(`${baseURL}/admin/accessory/${id}`);
+    // const { data } = await axios.delete(`${baseURL}/admin/accessory/${id}`);
+
+    const { data } = await axios.delete(
+      `${baseURL}/admin/accessory/${id}`,
+
+      {
+        headers: {
+          "Content-type": "application/json",
+          authtoken,
+        },
+      }
+    );
 
     dispatch({
       type: DELETE_ACCESSORIES_SUCCESS,
@@ -124,31 +144,42 @@ export const deleteAccessory = (id) => async (dispatch) => {
 };
 
 // Updating Existing Accessory
-export const updateAccessory = (id, accessoryData) => async (dispatch) => {
-  try {
-    dispatch({ type: UPDATE_ACCESSORIES_RESET });
+export const updateAccessory =
+  (id, accessoryData, authtoken) => async (dispatch) => {
+    try {
+      dispatch({ type: UPDATE_ACCESSORIES_RESET });
 
-    const config = {
-      headers: { "Content-type": "application/json" },
-    };
+      // const config = {
+      //   headers: { "Content-type": "application/json" },
+      // };
 
-    const { data } = await axios.put(
-      `${baseURL}/admin/accessory/${id}`,
-      accessoryData,
-      config
-    );
+      // const { data } = await axios.put(
+      //   `${baseURL}/admin/accessory/${id}`,
+      //   accessoryData,
+      //   config
+      // );
+      const { data } = await axios.put(
+        `${baseURL}/admin/accessory/${id}`,
+        accessoryData,
+        {
+          headers: {
+            "Content-type": "application/json",
+            authtoken,
+          },
+        }
+      );
 
-    dispatch({
-      type: UPDATE_ACCESSORIES_SUCCESS,
-      payload: data.success,
-    });
-  } catch (error) {
-    dispatch({
-      type: UPDATE_ACCESSORIES_FAIL,
-      payload: error.response.data.message,
-    });
-  }
-};
+      dispatch({
+        type: UPDATE_ACCESSORIES_SUCCESS,
+        payload: data.success,
+      });
+    } catch (error) {
+      dispatch({
+        type: UPDATE_ACCESSORIES_FAIL,
+        payload: error.response.data.message,
+      });
+    }
+  };
 
 // Clearing Errors
 export const clearErrors = () => async (dispatch) => {

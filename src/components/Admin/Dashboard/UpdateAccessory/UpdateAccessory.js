@@ -26,6 +26,8 @@ const UpdateAccessory = () => {
     (state) => state.accessoryDetails
   );
 
+  const { idToken } = useSelector((state) => state.user.user);
+
   const { error: updateError, isUpdated } = useSelector(
     (state) => state.updateAccessory
   );
@@ -76,7 +78,7 @@ const UpdateAccessory = () => {
     // Checking before Update
     const proceed = window.confirm("Are Your Sure ???");
     if (proceed) {
-      dispatch(updateAccessory(id.id, accessoryData));
+      dispatch(updateAccessory(id.id, accessoryData, idToken));
     }
   };
 
@@ -123,19 +125,19 @@ const UpdateAccessory = () => {
               >
                 <div className="mt-2">
                   <input
-                    style={{ width: '50%' }}
+                    style={{ width: "50%" }}
                     type="text"
                     required
                     placeholder={accessory.name}
                     defaultValue={accessory.name}
                     name="name"
                     onChange={handleChange}
-                  // onChange={(e) => setName(e.target.defaultValue)}
+                    // onChange={(e) => setName(e.target.defaultValue)}
                   />
                 </div>
                 <div className="mt-2">
                   <input
-                    style={{ width: '50%' }}
+                    style={{ width: "50%" }}
                     name="price"
                     type="number"
                     placeholder={accessory.price}
@@ -147,7 +149,7 @@ const UpdateAccessory = () => {
                 </div>
                 <div className="mt-2">
                   <textarea
-                    style={{ width: '50%' }}
+                    style={{ width: "50%" }}
                     placeholder={accessory.description}
                     defaultValue={accessory.description}
                     required
@@ -155,14 +157,13 @@ const UpdateAccessory = () => {
                     cols="30"
                     rows="1"
                     onChange={handleChange}
-                  // onChange={(e) => setDescription(e.target.defaultValue)}
+                    // onChange={(e) => setDescription(e.target.defaultValue)}
                   />
                 </div>
 
                 <div className="mt-2">
-
                   <select
-                    style={{ width: '50%' }}
+                    style={{ width: "50%" }}
                     name="category"
                     onChange={handleChange}
                     placeholder={accessory.category}
@@ -179,13 +180,13 @@ const UpdateAccessory = () => {
                 {/* Images */}
                 <div className="mt-2">
                   <input
-                    style={{ width: '50%' }}
+                    style={{ width: "50%" }}
                     type="file"
                     name="avatar"
                     accept="image/*"
                     multiple
                     onChange={createAccessoryImagesChange}
-                  // onChange={(e) => setImages(e.target.files)}
+                    // onChange={(e) => setImages(e.target.files)}
                   />
                 </div>
 
@@ -206,7 +207,11 @@ const UpdateAccessory = () => {
                   ))}
                 </div>
 
-                <button className="mt-3" type="submit" disabled={loading ? true : false}>
+                <button
+                  className="mt-3"
+                  type="submit"
+                  disabled={loading ? true : false}
+                >
                   Update Accessory
                 </button>
               </form>

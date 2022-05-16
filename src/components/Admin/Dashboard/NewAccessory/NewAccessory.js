@@ -9,7 +9,13 @@ import {
 import { NEW_ACCESSORIES_RESET } from "../../../../redux/constants/accessoriesConstant";
 import Sidebar from "../../Sidebar/Sidebar";
 
-const categories = ["Bag", "Box", "Machine", "Manufacture Item"];
+const categories = [
+  "Select Accessory Category",
+  "Bag",
+  "Box",
+  "Machine",
+  "Manufacture Item",
+];
 const NewAccessory = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -18,6 +24,7 @@ const NewAccessory = () => {
   const { loading, error, success } = useSelector(
     (state) => state.newAccessory
   );
+  const { idToken } = useSelector((state) => state.user.user);
 
   const [inputs, setInputs] = useState({});
   const [images, setImages] = useState([]);
@@ -49,7 +56,7 @@ const NewAccessory = () => {
   const handleCreateAccessory = (e) => {
     e.preventDefault();
 
-    dispatch(createAccessories(accessory));
+    dispatch(createAccessories(accessory, idToken));
   };
 
   //   Image Handler
@@ -99,6 +106,17 @@ const NewAccessory = () => {
                   // onChange={(e) => setName(e.target.value)}
                 />
               </div>
+              <div className="mt-2">
+                <input
+                  style={{ width: "60%" }}
+                  type="text"
+                  placeholder="Product Code"
+                  required
+                  name="accessoryProductId"
+                  onChange={handleChange}
+                  // onChange={(e) => setName(e.target.value)}
+                />
+              </div>
               <div className="mt-3">
                 <input
                   style={{ width: "50%" }}
@@ -113,7 +131,7 @@ const NewAccessory = () => {
               <div className="mt-3">
                 <textarea
                   style={{ width: "50%" }}
-                  placeholder=" Description"
+                  placeholder="Description"
                   required
                   name="description"
                   cols="30"

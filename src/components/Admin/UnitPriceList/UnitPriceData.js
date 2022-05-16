@@ -19,7 +19,7 @@ const UnitPriceData = ({ item }) => {
       dispatch(deleteUnit(id));
 
       alert.success("Unit Deleted Successfully");
-      navigate("/admin/dashboard");
+      navigate("/admin/units");
     }
   };
 

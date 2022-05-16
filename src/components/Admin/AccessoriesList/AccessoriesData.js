@@ -1,6 +1,6 @@
 import React from "react";
 import { useAlert } from "react-alert";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { deleteAccessory } from "../../../redux/actions/accessoriesAction";
 
@@ -11,12 +11,14 @@ const AccessoriesData = ({ item }) => {
 
   const { _id, name, price, category } = item;
 
+  const { idToken } = useSelector((state) => state.user.user);
+
   // Delete Accessory Handler
   const deleteAccessoryHandler = (id) => {
     // Checking before delete
     const proceed = window.confirm("Are Your Sure ???");
     if (proceed) {
-      dispatch(deleteAccessory(id));
+      dispatch(deleteAccessory(id, idToken));
 
       alert.success("Accessory Deleted Successfully");
       navigate("/admin/dashboard");

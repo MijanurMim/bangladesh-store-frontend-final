@@ -190,9 +190,9 @@ export const updateProduct =
     try {
       dispatch({ type: UPDATE_PRODUCT_REQUEST });
 
-      const config = {
-        headers: { "Content-type": "application/json" },
-      };
+      // const config = {
+      //   headers: { "Content-type": "application/json" },
+      // };
 
       const { data } = await axios.put(
         `${baseURL}/admin/product/${id}`,

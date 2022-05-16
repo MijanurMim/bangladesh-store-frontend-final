@@ -3,7 +3,7 @@ import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearErrors,
-  getAdminAccessories,
+  getAccessories,
 } from "../../../redux/actions/accessoriesAction";
 import Spinner from "../../spinner/Spinner";
 import Sidebar from "../Sidebar/Sidebar";
@@ -23,7 +23,7 @@ const AccessoriesList = () => {
       dispatch(clearErrors());
     }
 
-    dispatch(getAdminAccessories());
+    dispatch(getAccessories());
   }, [dispatch, alert, error]);
   console.log(accessories);
 
