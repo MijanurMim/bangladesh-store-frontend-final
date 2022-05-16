@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 import Pagination from "react-js-pagination";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { clearErrors, getProduct } from "../../../redux/actions/productAction";
 import Spinner from "../../spinner/Spinner";
 import Sidebar from "../Sidebar/Sidebar";
@@ -18,14 +19,17 @@ const ProductsList = () => {
   // const { idToken } = useSelector((state) => state.user.user);
 
   const [keyword, setKeyword] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState("");
 
   const [currentPage, setCurrentPage] = useState(1);
+
+  const { category } = useParams();
 
   //  Search Handler
   const searchSubmitHandler = (e) => {
     e.preventDefault();
     if (keyword.trim()) {
-      console.log(keyword);
+      setSearchKeyword(keyword);
     }
   };
 
@@ -40,8 +44,9 @@ const ProductsList = () => {
       dispatch(clearErrors());
     }
 
-    dispatch(getProduct(keyword, currentPage));
-  }, [dispatch, alert, error, currentPage]);
+    dispatch(getProduct(searchKeyword, currentPage, category));
+  }, [dispatch, alert, error, currentPage, category, searchKeyword]);
+
   console.log(products);
 
   return (
@@ -56,17 +61,15 @@ const ProductsList = () => {
             </div>
             <div className="col-8">
               {/* Search area  */}
-              <div>
-                <form onSubmit={searchSubmitHandler}>
-                  <input
-                    type="text"
-                    placeholder="Search Product by Name ..."
-                    onChange={(e) => setKeyword(e.target.value)}
-                  />
+              <form onSubmit={searchSubmitHandler}>
+                <input
+                  type="text"
+                  placeholder="Search Product by Name ..."
+                  onChange={(e) => setKeyword(e.target.value)}
+                />
+                <input type="submit" value="Search" />
+              </form>
 
-                  <input type="submit" value="search" />
-                </form>
-              </div>
               <table class="table">
                 <thead>
                   <tr>
