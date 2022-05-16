@@ -28,7 +28,9 @@ const LoginPage = () => {
               CreateOrUpdateUser(user.accessToken, user).then((res) => {
                 console.log(res);
                 const { role } = res.data;
-                if (role === "admin") navigate("/admin/dashboard");
+                if (role === "admin") {
+                  navigate("/admin/dashboard");
+                }
               });
             })
             .catch((error) => {
