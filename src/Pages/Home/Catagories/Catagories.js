@@ -23,10 +23,11 @@ const Catagories = () => {
                 {/* div1 for tems */}
                 <div className='d-flex' id="item-one">
 
-                    <NavLink href="/gold" style={{ margin: 0, padding: 0 }}><div className='item'>
-                        <img className='item-img' src={goldimg3} alt="" />
-                        <h6 className='item-text'>Gold</h6>
-                    </div>
+                    <NavLink href="/gold" style={{ margin: 0, padding: 0 }}>
+                        <div className='item'>
+                            <img className='item-img' src={goldimg3} alt="" />
+                            <h6 className='item-text'>Gold</h6>
+                        </div>
                     </NavLink>
                     <NavLink href="/silver" style={{ margin: 0, padding: 0 }}>
                         <div className='item' >
@@ -39,15 +40,15 @@ const Catagories = () => {
 
                 {/* div2 for items */}
 
-                <div className='d-flex d-inline-block'>
-                    <NavLink href="/diamonds">
+                <div className='div2 d-flex d-inline-block'>
+                    <NavLink href="/diamonds" style={{ margin: 0, padding: 0 }} >
                         <div className='item'>
                             <img className='item-img' src={goldimg2} alt="" />
                             <h6 className='item-text'>Diamond</h6>
                         </div>
                     </NavLink>
 
-                    <NavLink href="/jwellerybag" >
+                    <NavLink href="/jwellerybag" style={{ margin: 0, padding: 0 }} >
                         <div className='item'>
                             <img className='item-img' src={accessories} alt="" />
                             <h6 className='item-text'>Accessories</h6>

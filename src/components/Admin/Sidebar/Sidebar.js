@@ -19,9 +19,9 @@ const Sidebar = () => {
       <Link style={{ textDecoration: "none" }} to="/admin/units">
         <p>All Unit Price</p>
       </Link>
-      <Link style={{ textDecoration: "none" }} to="/admin/unit">
+      {/* <Link style={{ textDecoration: "none" }} to="/admin/unit">
         <p>New Unit Price</p>
-      </Link>
+      </Link> */}
     </div>
   );
 };

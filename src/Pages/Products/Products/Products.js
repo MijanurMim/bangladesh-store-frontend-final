@@ -13,30 +13,30 @@ const Products = ({ product, units }) => {
 
   if (type === "Gold 18 karat") {
 
-    Finalprice = `${units[0].price / 11.6638}`;
+    Finalprice = `${units[2].price / 11.6638}`;
     console.log("this is 18")
   }
   if (type === "Gold 21 karat") {
-    Finalprice = `${units[1].price / 11.6638}`;
+    Finalprice = `${units[5].price / 11.6638}`;
     console.log("this is 19")
   }
 
   if (type === "Gold 22 karat") {
-    Finalprice = `${units[2].price / 11.6638}`;
+    Finalprice = `${units[1].price / 11.6638}`;
     console.log("this is 21")
 
   }
   if (type === "Gold 24 karat") {
-    Finalprice = `${units[3].price / 11.6638}`;
+    Finalprice = `${units[0].price / 11.6638}`;
     console.log("this is 24")
   }
   if (type === "Silver 21 karat") {
-    Finalprice = `${units[4].price / 11.6638}`;
+    Finalprice = `${units[3].price / 11.6638}`;
     console.log(Finalprice)
 
   }
   if (type === "Silver 24 karat") {
-    Finalprice = `${units[5].price / 11.6638}`;
+    Finalprice = `${units[4].price / 11.6638}`;
     console.log(Finalprice)
   };
   let mainPrice = Finalprice * weight;
@@ -63,8 +63,10 @@ const Products = ({ product, units }) => {
           <p className="">{productId}</p>
           {type !== "Diamond" ? <p className="">{type}</p> : ""}
           {type !== "Diamond" ? <p class="card-text">Weight:{weight}gm</p> : ""}
-          {type !== "Diamond" ? <p class="card-text"><span style={{}}>Price</span>:{mainPrice.toFixed(3)}+{price}</p> : <p class="card-text"><span style={{}}>Price</span>:{price}</p>}
-          <Nav.Link href="/contactus"><button style={{ border: 'none', backgroundColor: '#d4caca', borderRadius: "4px", boxShadow: "3px 3px 3px 3px #cba0a0" }}>Purchase</button></Nav.Link>
+          {type !== "Diamond" ? <p class="card-text"><span style={{}}>Price</span>:{mainPrice.toFixed(2)}+{price}</p> : <p class="card-text"><span style={{}}>Price</span>:{price}</p>}
+          <Nav.Link href="/contactus">
+            <Button style={{ border: 'none', backgroundColor: '#d4caca', color: 'black', borderRadius: "4px", boxShadow: "3px 3px 3px 3px #cba0a0" }}>BUY</Button>
+          </Nav.Link>
 
 
 

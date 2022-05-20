@@ -50,4 +50,22 @@
         flex-direction: row;
 
     }
+
+    .div-us-img {
+        display: none;
+    }
+
+    .about-text {
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .aboutus-h1 {
+        /* background-color: brown; */
+        display: inline;
+        /* border: 2px solid black; */
+        width: 50%;
+        margin: auto;
+    }
 }

@@ -28,3 +28,15 @@ li {
 .pagination {
   background-color: "green";
 }
+
+@media only screen and (max-width:600px) {
+  .gold-catagory {
+    font-size: 16px;
+
+  }
+
+  .element {
+    width: 80%;
+    margin: auto;
+  }
+}

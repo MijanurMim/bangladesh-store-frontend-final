@@ -87,7 +87,7 @@ const Silver = () => {
             <div className="row">
               <div style={{ height: 800 }} className="col-3 catagory-container">
                 {/* Category Section  */}
-                <h4>Categories</h4>
+                <h4 className="gold-catagory">Categories</h4>
 
                 <div onClick={() => setCategory("Silver Anklet")}>
                   <NavLink>
@@ -147,7 +147,7 @@ const Silver = () => {
 
 
                 {/* <Row> */}
-                <div class=" row ">
+                <div class=" row element ">
                   {products &&
                     products.map((product) => (
                       <Col sm={4} md={3}>

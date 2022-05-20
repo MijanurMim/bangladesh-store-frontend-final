@@ -98,7 +98,7 @@ const Gold = () => {
             <div className="row">
               <div style={{ height: 850 }} className="col-3 catagory-container">
                 {/* Category Section  */}
-                <h4>Categories</h4>
+                <h4 className="gold-catagory">Categories</h4>
 
                 <div onClick={() => setCategory("Gold Anklet")}>
                   <NavLink>
@@ -252,7 +252,7 @@ const Gold = () => {
 
 
                 {/* <Row> */}
-                <div class=" row ">
+                <div class=" row element ">
                   {products &&
                     products.map((product) => (
                       <Col sm={6} md={3}>
@@ -274,7 +274,7 @@ const Gold = () => {
 
                 {/* Pagination section  */}
                 {resultPerPage < productsCount && (
-                  <div style={{ marginLeft: -80 }} className="pagination ">
+                  <div style={{}} className="pagination mx-auto ">
                     <Pagination
                       activePage={currentPage}
                       itemsCountPerPage={resultPerPage}

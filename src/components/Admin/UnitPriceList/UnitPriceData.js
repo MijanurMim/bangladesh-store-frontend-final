@@ -32,9 +32,9 @@ const UnitPriceData = ({ item }) => {
       <td>
         <Link to={`/admin/unit/${_id}`}>Edit </Link>
       </td>
-      <td>
+      {/* <td>
         <button onClick={() => deleteUnitHandler(_id)}>Delete</button>
-      </td>
+      </td> */}
     </tr>
   );
 };

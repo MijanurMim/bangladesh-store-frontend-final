@@ -40,7 +40,7 @@ const UnitPriceList = () => {
                     <th scope="col">PRICE</th>
 
                     <th scope="col">EDIT</th>
-                    <th scope="col">DELETE</th>
+                    {/* <th scope="col">DELETE</th> */}
                   </tr>
                 </thead>
                 <tbody>

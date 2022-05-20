@@ -103,18 +103,18 @@ const NewAccessory = () => {
                   required
                   name="name"
                   onChange={handleChange}
-                  // onChange={(e) => setName(e.target.value)}
+                // onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className="mt-2">
                 <input
-                  style={{ width: "60%" }}
+                  style={{ width: "50%" }}
                   type="text"
                   placeholder="Product Code"
                   required
                   name="accessoryProductId"
                   onChange={handleChange}
-                  // onChange={(e) => setName(e.target.value)}
+                // onChange={(e) => setName(e.target.value)}
                 />
               </div>
               <div className="mt-3">
@@ -128,7 +128,7 @@ const NewAccessory = () => {
                   onChange={handleChange}
                 />
               </div>
-              <div className="mt-3">
+              {/* <div className="mt-3">
                 <textarea
                   style={{ width: "50%" }}
                   placeholder="Description"
@@ -137,9 +137,9 @@ const NewAccessory = () => {
                   cols="30"
                   rows="1"
                   onChange={handleChange}
-                  // onChange={(e) => setDescription(e.target.value)}
+                // onChange={(e) => setDescription(e.target.value)}
                 />
-              </div>
+              </div> */}
 
               <div className="mt-3">
                 <select
@@ -164,7 +164,7 @@ const NewAccessory = () => {
                   accept="image/*"
                   multiple
                   onChange={createProductImagesChange}
-                  // onChange={(e) => setImages(e.target.files)}
+                // onChange={(e) => setImages(e.target.files)}
                 />
               </div>
 
